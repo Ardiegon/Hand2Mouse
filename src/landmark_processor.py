@@ -60,7 +60,7 @@ class LandmarkProcessor():
 
         new_center = calculate_center(hand)
 
-        move_x = (new_center[0] - self.last_center[0]) * self.cursor_sensitivity
+        move_x = -(new_center[0] - self.last_center[0]) * self.cursor_sensitivity
         move_y = (new_center[1] - self.last_center[1]) * self.cursor_sensitivity
         index_finger = calculate_squared_distance(hand, (4,8)) < self.click_threshold**2
         middle_finger = calculate_squared_distance(hand, (4,12)) < self.click_threshold**2

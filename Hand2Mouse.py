@@ -1,5 +1,6 @@
 import argparse
 from src import HandDetector, CameraStream, LandmarkProcessor
+from src.mouse_manager import MouseManager
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -12,17 +13,20 @@ def parse_arguments():
 
 def main():
     opt = parse_arguments()
-    running = True 
+    running = True
+
     cs = CameraStream()
     hd = HandDetector()
     lp_unit = LandmarkProcessor(opt)
+    mouse = MouseManager()
+   
     while running:
         image = cs.getNextImage()
         success, result = hd.process_image(image)
         move, events = lp_unit(result, not success)
+        mouse(move, events)
         running = not events[-1]
-        print(move)
-
+        
 
 if __name__ == "__main__":
     main() 
