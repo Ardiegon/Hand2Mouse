@@ -1,5 +1,5 @@
 
-from signal import signal
+import math
 
 
 def calculate_center(hand):
@@ -17,6 +17,15 @@ def calculate_squared_distance(hand, ids):
 def calculate_turned_back(hand):
     distance_x = hand[4][0] - hand[17][0]
     return distance_x < -40
+
+def filter_noise_movement(mov, func = "atanintegral"):
+    if func =="x3rd":
+        return (1/10000)*(mov**3)
+    elif func =="atanintegral":
+        if mov > 0:
+            return mov*math.atan(mov) - (math.log((mov**2)+1))/2
+        else:
+            return -(mov*math.atan(mov) - (math.log((mov**2)+1))/2)
  
 
 class LandmarkProcessor():
@@ -60,8 +69,8 @@ class LandmarkProcessor():
 
         new_center = calculate_center(hand)
 
-        move_x = -(new_center[0] - self.last_center[0]) * self.cursor_sensitivity
-        move_y = (new_center[1] - self.last_center[1]) * self.cursor_sensitivity
+        move_x = -filter_noise_movement((new_center[0] - self.last_center[0]) * self.cursor_sensitivity)
+        move_y = filter_noise_movement((new_center[1] - self.last_center[1]) * self.cursor_sensitivity)
         index_finger = calculate_squared_distance(hand, (4,8)) < self.click_threshold**2
         middle_finger = calculate_squared_distance(hand, (4,12)) < self.click_threshold**2
         ring_finger = calculate_squared_distance(hand, (4,16)) < self.click_threshold**2
