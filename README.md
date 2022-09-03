@@ -45,4 +45,3 @@ Planned activities are
 | Drag something | Do Italian gesture |
 | Scroll down | Point with index finger and slide down |
 | Scroll up | Point with index finger and slide up |
-
