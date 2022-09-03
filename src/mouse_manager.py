@@ -10,7 +10,7 @@ class MouseManager():
     def click(self, events):
         if events[0]:
             mouse.click("left")
-        if events[1]:
+        elif events[1]:
             mouse.click("right")
         if events[2]:
             mouse.double_click("left")

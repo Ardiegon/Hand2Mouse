@@ -52,6 +52,7 @@ class LandmarkProcessor():
                 self.signal_filter[signal_id] =0
             events.append(self.signal_filter[signal_id] == self.filter_length)
 
+
         return move, events
 
 
