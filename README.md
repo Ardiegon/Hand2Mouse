@@ -31,17 +31,11 @@ Control your mouse with:
 | Mouse       | Hand        |
 | ----------- | ----------- |
 | Move cursor      | Move Hand       |
-| Left Click   | Touch Your index finger to your thumb's tip |
-| Right Click   | Touch Your middle finger to your thumb's tip |
-| Double Left Click   | Touch Your ring finger to your thumb's tip |
+| Left Click   | Touch your index finger to your thumb's tip |
+| Right Click   | Touch your middle finger to your thumb's tip |
+| Double Left Click   | Touch your ring finger to your thumb's tip |
+| Do nothing      | Touch your thumb to your rigth side of palm |
+| Drag something | Touch tour index, middle, and ring finger with your pinkie pointing up |
+| Scroll up and down | Touch your thumb, ring, and pinkie, with your index and middle pointing up|
 
-### In future
-There are a lot of possibilities of upgrading hand gestures to controll more stuff.
-Planned activities are
-
-| Mouse       | Hand        |
-| ----------- | ----------- |
-| Do nothing      | Touch Your pinkie to your thumb's tip       |
-| Drag something | Do Italian gesture |
-| Scroll down | Point with index finger and slide down |
-| Scroll up | Point with index finger and slide up |
+To simulate depth vision of single camera, it's recomended to turn your hand slightly while doing gestures for better cursor response.
