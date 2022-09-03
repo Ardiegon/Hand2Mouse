@@ -1,4 +1,5 @@
 import mouse
+from pyautogui import mouseDown, mouseUp
 
 class MouseManager():
     def __init__(self, opt):
@@ -8,30 +9,36 @@ class MouseManager():
         self.notmoving = False
 
     def define_movement_type(self, events):
-        if events["drag_enable"]:
-            self.dragging = True
-        elif events["drag_disable"]:
+        if events["drag_enable"] and not self.dragging:
+            print("drag")
+            mouseDown(button='left')
+            self.dragging = True 
+        elif events["drag_disable"] and self.dragging:
+            print("dragoff")
+            mouseUp(button='left')
             self.dragging = False
 
-        if events["scroll_enable"]:
+        if events["scroll_enable"] and not self.scrolling:
+            print("scroll")
             self.scrolling = True
-        elif events["scroll_disable"]:
+        elif events["scroll_disable"] and self.scrolling:
+            print("scrolloff")
             self.scrolling = False
 
-        if events["stopmovement_enable"]:
+        if events["stopmovement_enable"] and not self.notmoving:
+            print("stop")
             self.notmoving = True
-        elif events["stopmovement_disable"]:
+        elif events["stopmovement_disable"] and self.notmoving:
+            print("stopoff")
             self.notmoving = False
 
     def move_mouse(self, move):
-        if not self.notmoving and not self.dragging and not self.scrolling:
+        if not self.notmoving and not self.scrolling:
             mouse.move(move[0], move[1], absolute=False)
+        elif self.scrolling:
+            mouse.wheel(-move[1]/30)
         elif self.notmoving and not self.dragging and not self.scrolling:
             return
-        elif self.dragging:
-            mouse.drag(0, 0, move[0], move[1], absolute=False)
-        elif self.scrolling:
-            mouse.wheel(move[1])
 
     def click(self, events):
         if self.notmoving or self.dragging or self.scrolling:

@@ -14,8 +14,6 @@ class GestureEvent():
         self.counter += 1
 
     def get_output(self):
-        if self.name == "right_click":
-            print(self.counter)
         return self.counter == self.filter_length
 
     def get_name(self):

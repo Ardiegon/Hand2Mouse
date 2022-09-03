@@ -16,7 +16,7 @@ def calculate_turned_back(hand):
     distance_x = hand[4][0] - hand[17][0]
     return distance_x < -40
 
-def filter_noise_movement(mov, func = "atanintegral"):
+def filter_noise_movement(mov, func = "none"):
     if func =="x3rd":
         return (1/10000)*(mov**3)
     elif func =="atanintegral":
@@ -24,3 +24,5 @@ def filter_noise_movement(mov, func = "atanintegral"):
             return mov*math.atan(mov) - (math.log((mov**2)+1))/2
         else:
             return -(mov*math.atan(mov) - (math.log((mov**2)+1))/2)
+    elif func == "none":
+        return mov
