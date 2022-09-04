@@ -60,8 +60,8 @@ class GestureProcessor():
 
         new_center = calculate_center(hand)
 
-        move_x = -filter_noise_movement((new_center[0] - self.last_center[0]) * self.cursor_sensitivity)
-        move_y = filter_noise_movement((new_center[1] - self.last_center[1]) * self.cursor_sensitivity)
+        move_x = -filter_noise_movement((new_center[0] - self.last_center[0]) * self.cursor_sensitivity, "atanintegral")
+        move_y = filter_noise_movement((new_center[1] - self.last_center[1]) * self.cursor_sensitivity, "atanintegral")
         self.signals["index_finger"] = calculate_squared_distance(hand, (4,8)) < self.squared_click_threshold
         self.signals["not_index_finger"] = not self.signals["index_finger"]
         self.signals["middle_finger"] = calculate_squared_distance(hand, (4,12)) < self.squared_click_threshold

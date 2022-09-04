@@ -9,27 +9,22 @@ class MouseManager():
         self.notmoving = False
 
     def define_movement_type(self, events):
-        if events["drag_enable"] and not self.dragging:
-            print("drag")
+
+        if events["scroll_enable"] and not self.scrolling:
+            self.scrolling = True
+        elif events["scroll_disable"] and self.scrolling:
+            self.scrolling = False
+
+        if events["drag_enable"] and not self.dragging and not self.scrolling:
             mouseDown(button='left')
             self.dragging = True 
         elif events["drag_disable"] and self.dragging:
-            print("dragoff")
             mouseUp(button='left')
             self.dragging = False
 
-        if events["scroll_enable"] and not self.scrolling:
-            print("scroll")
-            self.scrolling = True
-        elif events["scroll_disable"] and self.scrolling:
-            print("scrolloff")
-            self.scrolling = False
-
         if events["stopmovement_enable"] and not self.notmoving:
-            print("stop")
             self.notmoving = True
         elif events["stopmovement_disable"] and self.notmoving:
-            print("stopoff")
             self.notmoving = False
 
     def move_mouse(self, move):
