@@ -39,3 +39,4 @@ Control your mouse with:
 | Scroll up and down | Touch your thumb, ring, and pinkie, with your index and middle pointing up|
 
 To simulate depth vision of single camera, it's recomended to turn your hand slightly while doing gestures for better cursor response.
+Soon I'll add photos of gestures with descriptions ;)
