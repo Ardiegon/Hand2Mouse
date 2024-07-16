@@ -3,22 +3,13 @@ Change your hand movements an gestures into cursor movements and actions!
 
 ## Instalation
 
-### Windows 
+### Windows / Linux / MacOS
 ```
 git clone https://github.com/Ardiegon/Hand2Mouse.git
 cd Hand2Mouse
-conda env create -f env.yml
-conda activate Hand2Mouse
-python configure.py
-python Hand2Mouse.py
-```
-### Linux
-```
-git clone https://github.com/Ardiegon/Hand2Mouse.git
-cd Hand2Mouse
-conda env create -f env.yml
-conda activate Hand2Mouse
-export PYTHONPATH=$(pwd):$(pwd)/src:$(PYTHONPATH)
+conda env create --name h2m python=3.8
+conda activate h2m
+pip install -e .
 python Hand2Mouse.py
 ```
 
