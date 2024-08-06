@@ -1,7 +1,7 @@
 import math
 
 def calculate_center(hand):
-    ids = [0,5,9,13,17]
+    ids = [0, 1, 17]
     avg_x = sum(hand[x][0] for x in ids)/len(ids)
     avg_y = sum(hand[x][1] for x in ids)/len(ids)
     return avg_x, avg_y
