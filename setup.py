@@ -13,6 +13,7 @@ setup(
         'mouse',
         'pyautogui',
         'mediapipe',
+        'pynput',
         'opencv-python==4.6.*'
     ],
     entry_points={
